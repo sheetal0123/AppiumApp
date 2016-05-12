@@ -1,12 +1,12 @@
 #POM Framework
 
 #Plans:
-1. read different capabilities of android and ios from enum
-1a. locator for android and ios in page class
-1b. run multiple test in different classes
+1. read different capabilities of android and ios from enum  - jugaad
+1a. locator for android and ios in page class - done
+1b. run multiple test in different classes - done
 1c. run testng from cmd + take android/ios + device name from cmd
 
-2. run for both iOS and android
+2. run for both iOS and android - done
 3. On exception take screenshot and place in a folder
 4. run on real devices
 

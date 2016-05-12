@@ -4,9 +4,11 @@
 <suite name="Login-Tests" parallel="false">
     <test name="Login-Tests">
         <classes>
-            <class name="testcases.LoginPageTestCases"/>
-            <class name="testcases.CascadePageTestCases"/>
-            <class name="testcases.MyProfileTestCases"/>
+        	<class name="testcases.SetupTest"/>
+            <class name="testcases.MyProfileTest"/> 
+            <class name="testcases.LoginPageTest"/>
+            <class name="testcases.CascadePageTest"/>
+
         </classes>
     </test>
 </suite>

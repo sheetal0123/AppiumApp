@@ -4,7 +4,8 @@
 <suite name="Cascade-Tests" parallel="false">
     <test name="Cascade-Tests">
         <classes>
-            <class name="testcases.CascadePagePageTestCases"/>
+            <class name="testcases.SetupTest"/>
+            <class name="testcases.CascadePageTest"/>
         </classes>
     </test>
 </suite>
