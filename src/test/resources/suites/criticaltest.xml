@@ -5,10 +5,14 @@
     <test name="Login-Tests">
         <classes>
         	<class name="testcases.SetupTest"/>
-            <class name="testcases.MyProfileTest"/> 
-            <class name="testcases.LoginPageTest"/>
             <class name="testcases.CascadePageTest"/>
-
+            
+            
+            <!-- 
+            <class name="testcases.LoginPageTest"/>
+            <class name="testcases.MyProfileTest"/> 
+            
+             -->
         </classes>
     </test>
 </suite>

@@ -1,8 +1,5 @@
 package helper;
 
-public class DriverRepo {
+public enum DriverRepo {
 
-	
-	
-	
 }
