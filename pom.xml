@@ -55,9 +55,6 @@
 					<suiteXmlFiles>
 						<!--run: mvn clean test -DsuiteXmlFile=src/test/resources/suites/criticaltest.xml -->
 						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
-						
-						<!-- run: mvn clean test -->
-						<!--<suiteXmlFile>src/test/resources/suites/criticaltest.xml</suiteXmlFile> -->
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>

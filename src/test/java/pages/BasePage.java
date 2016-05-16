@@ -28,7 +28,7 @@ public class BasePage {
 
 	static AppiumDriver<MobileElement> driver;
 	public Properties properties;
-	String osdevice, device;
+	String cmd_osdevice, osdevice, device;
 	static String os;
 
 	public BasePage() throws MalformedURLException {
@@ -37,6 +37,7 @@ public class BasePage {
 	}
 
 	public void getProperties() {
+		//reading from properties file
 		properties = new Properties();
 		try {
 			properties.load(new FileInputStream(
@@ -44,20 +45,29 @@ public class BasePage {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		osdevice = properties.getProperty("osdevice");
-		os = osdevice.split("#")[0];
-		device = osdevice.split("#")[1];
+
+		//reading from command line
+		cmd_osdevice = System.getProperty("osdevice");
+		
+		//priority will be given to cmd
+		if (cmd_osdevice != null && !cmd_osdevice.trim().isEmpty()){
+			os = cmd_osdevice.split("#")[0];
+			device = cmd_osdevice.split("#")[1];
+			System.out.println("CMD OS & Device: "+os+" & "+device);
+		}else{
+			osdevice = properties.getProperty("osdevice");
+			os = osdevice.split("#")[0];
+			device = osdevice.split("#")[1];
+			System.out.println("Prop OS & Device: "+os+" & "+device);
+		}
 	}
 
 	public void initDriver(String os, String device) throws MalformedURLException {
-
 		if (os.equals("android") && device.equals("Nexus_5_API_23")) {
-			System.out.println("Running test with driver: " + os + " & device: " + device);
 			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
 					DriverRepo.ANDROID_NEXUS_5_API23.getDesiredCapabilities());
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		} else if (os.equals("ios") && device.equals("iPhone_6_9.2")) {
-			System.out.println("Running test with driver: " + os + " & device: " + device);
 			driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
 					DriverRepo.IOS_IPHONE6_OS_9_2.getDesiredCapabilities());
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);

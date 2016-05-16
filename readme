@@ -1,7 +1,7 @@
 #POM Framework
 
 #Plans:
-1. read different capabilities of android and ios from enum  - jugaad
+1. read different capabilities of android and ios from enum  - done
 1a. locator for android and ios in page class - done
 1b. run multiple test in different classes - done
 1c. run testng from cmd + take android/ios + device name from cmd
@@ -14,3 +14,15 @@ reporting
 parallel
 grid
 jenkin integration
+
+
+
+
+
+Q: How to run framework:
+#read driver info from cmd line
+mvn clean test -Dosdevice=android#Nexus_5_API_23 -DsuiteXmlFile=src/test/resources/suites/criticaltest.xml
+mvn clean test -Dosdevice=ios#iPhone_6_9.2 -DsuiteXmlFile=src/test/resources/suites/criticaltest.xml
+
+#read driver info from property file
+mvn clean test -DsuiteXmlFile=src/test/resources/suites/criticaltest.xml
