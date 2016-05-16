@@ -9,13 +9,21 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
+import helper.DriverRepo;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 
+/*
+ * Base page is parent class of all page classes
+ * contains all static general methods
+ * reading property file + driver repo 
+ * 
+ * @author: sheetal
+ * May 2016
+ */
 public class BasePage {
 
 	static AppiumDriver<MobileElement> driver;
@@ -24,7 +32,7 @@ public class BasePage {
 	String deviceToRun;
 
 	public BasePage() throws MalformedURLException {
-		getProperties(); // load all properties
+		getProperties(); 
 		initDriver(driverToRun, deviceToRun);
 	}
 
@@ -41,40 +49,20 @@ public class BasePage {
 	}
 
 	public void initDriver(String driverToRun, String deviceToRun) throws MalformedURLException {
-		if (driverToRun.equals("android")) {
-			System.out.println("Running test with driver: "+ driverToRun+" & device: "+deviceToRun);
 
-			DesiredCapabilities capabilities = DesiredCapabilities.android();
-			capabilities.setCapability("appium-version", "1.5.0");
-			capabilities.setCapability("platformName", "Android");
-			capabilities.setCapability("platformVersion", "6.0");
-			// capabilities.setCapability("deviceName", "Nexus 5 API 23");
-			capabilities.setCapability("deviceName", deviceToRun);
-			//grindr_android_preprod1.apk
-			 capabilities.setCapability("app",
-			 "/Users/sheetalsingh/Documents/workspacee/AppiumApp/src/test/resources/builds/grindr_android_dev1.apk");
-			capabilities.setCapability("appPackage", "com.grindrapp.android");
-			capabilities.setCapability("browserName", "");
-
-			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		if (driverToRun.equals("android") && deviceToRun.equals("Nexus_5_API_23")) {
+			System.out.println("Running test with driver: " + driverToRun + " & device: " + deviceToRun);
+			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
+					DriverRepo.ANDROID_NEXUS_5_API23.getDesiredCapabilities());
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
-		} else if (driverToRun.equals("ios")) {
-			System.out.println("Running test with driver: "+ driverToRun+" & device: "+deviceToRun);
-			DesiredCapabilities capabilities = new DesiredCapabilities();
-			capabilities.setCapability("appium-version", "1.5.0");
-			capabilities.setCapability("platformName", "iOS");
-			capabilities.setCapability("platformVersion", "9.2");
-			capabilities.setCapability("deviceName", deviceToRun);
-			capabilities.setCapability("app", "/Users/sheetalsingh/Documents/workspacee/AppiumApp/src/test/resources/builds/grindr_ios_preprod1.zip");
-			capabilities.setCapability("browserName", "");
-
-			driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+		} else if (driverToRun.equals("ios") && deviceToRun.equals("iPhone 6")) {
+			System.out.println("Running test with driver: " + driverToRun + " & device: " + deviceToRun);
+			driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
+					DriverRepo.IOS_IPHONE6_OS_9_2.getDesiredCapabilities());
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			
 		} else {
 			System.out.println("Driver: no driver selected");
-			System.out.println("Running test with driver: "+ driverToRun+" & device: "+deviceToRun);
+			System.out.println("Running test with driver: " + driverToRun + " & device: " + deviceToRun);
 		}
 
 	}
@@ -82,11 +70,11 @@ public class BasePage {
 	public static void quit() {
 		driver.quit();
 	}
-	
+
 	public static void resetApp() {
 		driver.resetApp();
 	}
-	
+
 	/**
 	 * Based on android and ios, this method will return By locator of any
 	 * element
