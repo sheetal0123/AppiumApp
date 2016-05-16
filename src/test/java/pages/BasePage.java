@@ -28,12 +28,12 @@ public class BasePage {
 
 	static AppiumDriver<MobileElement> driver;
 	public Properties properties;
-	static String driverToRun;
-	String deviceToRun;
+	String osdevice, device;
+	static String os;
 
 	public BasePage() throws MalformedURLException {
-		getProperties(); 
-		initDriver(driverToRun, deviceToRun);
+		getProperties();
+		initDriver(os, device);
 	}
 
 	public void getProperties() {
@@ -44,25 +44,26 @@ public class BasePage {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		driverToRun = properties.getProperty("driver");
-		deviceToRun = properties.getProperty("device");
+		osdevice = properties.getProperty("osdevice");
+		os = osdevice.split("#")[0];
+		device = osdevice.split("#")[1];
 	}
 
-	public void initDriver(String driverToRun, String deviceToRun) throws MalformedURLException {
+	public void initDriver(String os, String device) throws MalformedURLException {
 
-		if (driverToRun.equals("android") && deviceToRun.equals("Nexus_5_API_23")) {
-			System.out.println("Running test with driver: " + driverToRun + " & device: " + deviceToRun);
+		if (os.equals("android") && device.equals("Nexus_5_API_23")) {
+			System.out.println("Running test with driver: " + os + " & device: " + device);
 			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
 					DriverRepo.ANDROID_NEXUS_5_API23.getDesiredCapabilities());
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		} else if (driverToRun.equals("ios") && deviceToRun.equals("iPhone 6")) {
-			System.out.println("Running test with driver: " + driverToRun + " & device: " + deviceToRun);
+		} else if (os.equals("ios") && device.equals("iPhone_6_9.2")) {
+			System.out.println("Running test with driver: " + os + " & device: " + device);
 			driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
 					DriverRepo.IOS_IPHONE6_OS_9_2.getDesiredCapabilities());
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		} else {
 			System.out.println("Driver: no driver selected");
-			System.out.println("Running test with driver: " + driverToRun + " & device: " + deviceToRun);
+			System.out.println("Running test with driver: " + os + " & device: " + device);
 		}
 
 	}
@@ -80,9 +81,9 @@ public class BasePage {
 	 * element
 	 */
 	public static By getByElement(By a_element, By i_element) {
-		if (driverToRun.equals("android")) {
+		if (os.equals("android")) {
 			return a_element;
-		} else if (driverToRun.equals("ios")) {
+		} else if (os.equals("ios")) {
 			return i_element;
 		}
 		return null;
