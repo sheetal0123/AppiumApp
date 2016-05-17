@@ -16,4 +16,9 @@
              -->
         </classes>
     </test>
+    
+    <!-- screenshot will be saved for all the failed test cases -->
+    <listeners>
+		<listener class-name="helper.TestListener" />
+	</listeners>
 </suite>

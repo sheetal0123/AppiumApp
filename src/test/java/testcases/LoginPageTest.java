@@ -29,13 +29,16 @@ public class LoginPageTest {
 	@Test
 	public void verifyEmailFiled() throws InterruptedException, IOException{
 		System.out.println("*** Login Test 2");
-		//Assert.assertTrue(LoginPage.isEmailFieldDisplayed());
+		Assert.assertTrue(LoginPage.isEmailFieldDisplayed());
+		/*
+		from catch we can call getscreenshot method
 		try{
 			LoginPage.isEmailFieldDisplayed();
 		}catch(NoSuchElementException e){
 			//pass test class name and test name for better reporting
 			LoginPage.getScreenshot("LoginPageTest","verifyEmailFiled");			
 		}
+		*/
 	}
 	
 	@Test

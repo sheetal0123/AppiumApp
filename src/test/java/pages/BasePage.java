@@ -110,7 +110,15 @@ public class BasePage {
 	 */
 	public static void getScreenshot(String testclass, String testname) throws IOException  {
 		String timestamp = new SimpleDateFormat("yyyyMMddhhmmss'.png'").format(new Date());
-		String dir = "/Users/sheetalsingh/Documents/workspacee/AppiumApp/src/test/resources/screenshots/catch/";
+		String dir; 
+		
+		//todo: path need to be relative
+		if(os.equals("android")){
+			dir = "/Users/sheetalsingh/Documents/workspacee/AppiumApp/src/test/resources/screenshots/android/";
+		}else{
+			dir = "/Users/sheetalsingh/Documents/workspacee/AppiumApp/src/test/resources/screenshots/ios/";
+		}
+		
 		String path = dir+testclass+"_"+testname+"_"+timestamp;  
 		System.out.println("path:"+path);
 
