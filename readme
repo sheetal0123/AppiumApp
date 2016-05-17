@@ -4,16 +4,20 @@
 1. read different capabilities of android and ios from enum  - done
 1a. locator for android and ios in page class - done
 1b. run multiple test in different classes - done
-1c. run testng from cmd + take android/ios + device name from cmd
+1c. run testng from cmd + take android/ios + device name from cmd  - done
 
 2. run for both iOS and android - done
-3. On exception take screenshot and place in a folder
-4. run on real devices
+3a. catch screenshot - done
+3aa. assert failure screenshot
+3b. setup fluentwait
+3c. add methods - double click, scroll, landscape, drag and drop, double finger etc
 
-reporting
-parallel
-grid
-jenkin integration
+
+4. run on real devices
+5. reporting - done
+6. parallel
+7. grid
+8. jenkin integration
 
 
 

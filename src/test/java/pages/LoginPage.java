@@ -9,7 +9,7 @@ public class LoginPage extends BasePage {
 	/**
 	 * Page elements
 	 */
-	static By a_email = By.id("fragment_auth_email");
+	static By a_email = By.id("88888fragment_auth_email");//wrong id to get screenshot
 	static By i_email = By.id("Email");
 	static By email = getByElement(a_email, i_email);
 		

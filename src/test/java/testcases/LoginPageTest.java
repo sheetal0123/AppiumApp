@@ -1,5 +1,10 @@
 package testcases;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -22,9 +27,15 @@ public class LoginPageTest {
 	}
 	
 	@Test
-	public void verifyEmailFiled() throws InterruptedException{
+	public void verifyEmailFiled() throws InterruptedException, IOException{
 		System.out.println("*** Login Test 2");
-		Assert.assertTrue(LoginPage.isEmailFieldDisplayed());
+		//Assert.assertTrue(LoginPage.isEmailFieldDisplayed());
+		try{
+			LoginPage.isEmailFieldDisplayed();
+		}catch(NoSuchElementException e){
+			//pass test class name and test name for better reporting
+			LoginPage.getScreenshot("LoginPageTest","verifyEmailFiled");			
+		}
 	}
 	
 	@Test

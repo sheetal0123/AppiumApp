@@ -1,14 +1,20 @@
 package pages;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import org.apache.commons.io.FileUtils;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import helper.DriverRepo;
 import io.appium.java_client.AppiumDriver;
@@ -37,7 +43,7 @@ public class BasePage {
 	}
 
 	public void getProperties() {
-		//reading from properties file
+		// reading from properties file
 		properties = new Properties();
 		try {
 			properties.load(new FileInputStream(
@@ -46,19 +52,19 @@ public class BasePage {
 			e.printStackTrace();
 		}
 
-		//reading from command line
+		// reading from command line
 		cmd_osdevice = System.getProperty("osdevice");
-		
-		//priority will be given to cmd
-		if (cmd_osdevice != null && !cmd_osdevice.trim().isEmpty()){
+
+		// priority will be given to cmd
+		if (cmd_osdevice != null && !cmd_osdevice.trim().isEmpty()) {
 			os = cmd_osdevice.split("#")[0];
 			device = cmd_osdevice.split("#")[1];
-			System.out.println("CMD OS & Device: "+os+" & "+device);
-		}else{
+			System.out.println("CMD OS & Device: " + os + " & " + device);
+		} else {
 			osdevice = properties.getProperty("osdevice");
 			os = osdevice.split("#")[0];
 			device = osdevice.split("#")[1];
-			System.out.println("Prop OS & Device: "+os+" & "+device);
+			System.out.println("Prop OS & Device: " + os + " & " + device);
 		}
 	}
 
@@ -97,6 +103,19 @@ public class BasePage {
 			return i_element;
 		}
 		return null;
+	}
+
+	/*
+	 * This method will take screen shot and place in specified folder
+	 */
+	public static void getScreenshot(String testclass, String testname) throws IOException  {
+		String timestamp = new SimpleDateFormat("yyyyMMddhhmmss'.png'").format(new Date());
+		String dir = "/Users/sheetalsingh/Documents/workspacee/AppiumApp/src/test/resources/screenshots/catch/";
+		String path = dir+testclass+"_"+testname+"_"+timestamp;  
+		System.out.println("path:"+path);
+
+		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(scrFile, new File(path));
 	}
 
 	public static void sendKeys(By locator, String keyword) {
