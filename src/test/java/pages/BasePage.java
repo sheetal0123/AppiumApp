@@ -47,7 +47,7 @@ public class BasePage {
 		properties = new Properties();
 		try {
 			properties.load(new FileInputStream(
-					"/Users/sheetalsingh/Documents/workspacee/AppiumApp/src/test/resources/grindr.properties"));
+					"/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/grindr.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -84,14 +84,6 @@ public class BasePage {
 
 	}
 
-	public static void quit() {
-		driver.quit();
-	}
-
-	public static void resetApp() {
-		driver.resetApp();
-	}
-
 	/**
 	 * Based on android and ios, this method will return By locator of any
 	 * element
@@ -105,6 +97,16 @@ public class BasePage {
 		return null;
 	}
 
+	
+	public static void quit() {
+		driver.quit();
+	}
+
+	public static void resetApp() {
+		driver.resetApp();
+	}
+
+
 	/*
 	 * This method will take screen shot and place in specified folder
 	 */
@@ -114,9 +116,9 @@ public class BasePage {
 		
 		//todo: path need to be relative
 		if(os.equals("android")){
-			dir = "/Users/sheetalsingh/Documents/workspacee/AppiumApp/src/test/resources/screenshots/android/";
+			dir = "/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/screenshots/android/";
 		}else{
-			dir = "/Users/sheetalsingh/Documents/workspacee/AppiumApp/src/test/resources/screenshots/ios/";
+			dir = "/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/screenshots/ios/";
 		}
 		
 		String path = dir+testclass+"_"+testname+"_"+timestamp;  

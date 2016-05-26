@@ -2,22 +2,24 @@
 
 #Plans:
 1. read different capabilities of android and ios from enum  - done
-1a. locator for android and ios in page class - done
-1b. run multiple test in different classes - done
-1c. run testng from cmd + take android/ios + device name from cmd  - done
+2. locator for android and ios in page class - done
+3. run multiple test in different classes - done
+4. run testng from cmd + take android/ios + device name from cmd  - done
+5. run for both iOS and android - done
+6. screenshot from inside catch block - done
+7. auto screenshot when any test case failed - done
 
-2. run for both iOS and android - done
-3a. catch screenshot - done
-3aa. assert failure screenshot
-3b. setup fluentwait
-3c. add methods - double click, scroll, landscape, drag and drop, double finger etc
+8. rerun failed test cases 
+9. setup adv test reporter - http://extentreports.relevantcodes.com/java/
+
+10. setup fluentwait
+11. add methods - double click, scroll, landscape, drag and drop, double finger etc
 
 
-4. run on real devices
-5. reporting - done
-6. parallel
-7. grid
-8. jenkin integration
+12. run on real devices
+13. parallel
+14. grid
+15. jenkin integration
 
 
 

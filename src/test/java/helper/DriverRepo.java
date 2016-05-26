@@ -18,7 +18,7 @@ public enum DriverRepo {
 			capabilities.setCapability("platformVersion", "6.0");
 			capabilities.setCapability("deviceName", "Nexus 5 API 23");
 			capabilities.setCapability("app",
-					"/Users/sheetalsingh/Documents/workspacee/AppiumApp/src/test/resources/builds/grindr_android_dev1.apk");
+					"/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/builds/grindr_android_dev1.apk");
 			capabilities.setCapability("appPackage", "com.grindrapp.android");
 			capabilities.setCapability("browserName", "");
 			return capabilities;
@@ -34,7 +34,7 @@ public enum DriverRepo {
 			capabilities.setCapability("platformVersion", "9.2");
 			capabilities.setCapability("deviceName", "iPhone 6");
 			capabilities.setCapability("app",
-					"/Users/sheetalsingh/Documents/workspacee/AppiumApp/src/test/resources/builds/grindr_ios_preprod1.zip");
+					"/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/builds/grindrx-dev1-branchDevelop.zip");
 			capabilities.setCapability("browserName", "");
 			return capabilities;
 		}
