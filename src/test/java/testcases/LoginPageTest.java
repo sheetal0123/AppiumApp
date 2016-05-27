@@ -25,22 +25,22 @@ public class LoginPageTest extends SetupTest {
 //		BasePage.resetApp();
 //	}
 	
-	@AfterMethod
-	 protected void afterMethod(ITestResult result) {
-        if (result.getStatus() == ITestResult.FAILURE) {
-        	extentTest.log(LogStatus.FAIL, result.getThrowable());
-        } else if (result.getStatus() == ITestResult.SKIP) {
-        	extentTest.log(LogStatus.SKIP, "Test skipped " + result.getThrowable());
-        } else {
-        	extentTest.log(LogStatus.PASS, "Test passed");
-        }
-        
-        extentReporters.endTest(extentTest);        
-        extentReporters.flush();
-        
-        BasePage.resetApp();
-        
-    }
+//	@AfterMethod
+//	 protected void afterMethod(ITestResult result) {
+//        if (result.getStatus() == ITestResult.FAILURE) {
+//        	extentTest.log(LogStatus.FAIL, result.getThrowable());
+//        } else if (result.getStatus() == ITestResult.SKIP) {
+//        	extentTest.log(LogStatus.SKIP, "Test skipped " + result.getThrowable());
+//        } else {
+//        	extentTest.log(LogStatus.PASS, "Test passed");
+//        }
+//        
+//        extentReporters.endTest(extentTest);        
+//        extentReporters.flush();
+//        
+//        BasePage.resetApp();
+//        
+//    }
 		
 	//@Test
 	public void verifyLoginPage() throws InterruptedException{
@@ -75,16 +75,16 @@ public class LoginPageTest extends SetupTest {
 	
 	 @Test
 	 public void passTest() {
-		 extentTest = extentReporters.startTest("passTest");
-		 extentTest.log(LogStatus.PASS, "Pass");
-		 Assert.assertEquals(extentTest.getRunStatus(), LogStatus.PASS);
+//		 extentTest = extentReporters.startTest("passTest");
+//		 extentTest.log(LogStatus.PASS, "Pass");
+//		 Assert.assertEquals(extentTest.getRunStatus(), LogStatus.PASS);
 	 }
 	    
 	 
 	 @Test
 	 public void intentionalFailure() throws Exception {
-	    extentTest = extentReporters.startTest("intentionalFailure");
-	    throw new Exception("intentional failure");        
+//	    extentTest = extentReporters.startTest("intentionalFailure");
+//	    throw new Exception("intentional failure");        
 	 }
 	
 }
