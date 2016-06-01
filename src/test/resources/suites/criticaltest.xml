@@ -4,8 +4,8 @@
 <suite name="Login-Tests" parallel="false">
     <test name="Login-Tests">
         <classes>
-        	
-        	<class name="testcases.TestClass"/>
+        	<class name="testcases.SetupTest"/>
+        	<class name="testcases.TestClass2"/>
             
             
             <!-- 
@@ -13,13 +13,18 @@
             <class name="testcases.CascadePageTest"/>
             <class name="testcases.LoginPageTest"/>
             <class name="testcases.MyProfileTest"/> 
-            
+            <class name="testcases.TestClass"/>
              -->
         </classes>
     </test>
     
+    
+    
     <!-- screenshot will be saved for all the failed test cases -->
     <listeners>
 		<listener class-name="helper.TestListener" />
+		<listener class-name="helper.RetryListener"/>
 	</listeners>
+	
+	
 </suite>

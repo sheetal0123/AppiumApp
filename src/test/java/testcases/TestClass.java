@@ -18,13 +18,13 @@ public class TestClass {
 	final String filePath = "/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/extentreporting/report.html";
 	final String screenPath = "/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/extentreporting/screenshots";
 
-	@BeforeSuite
+	//@BeforeSuite
 	public void beforeSuite() {
 		extentReporters = new ExtentReports(filePath, true);
 		
 	}
 
-	@AfterSuite
+	//ß@AfterSuite
 	protected void afterSuite() {
 		extentReporters.close();
 	}
