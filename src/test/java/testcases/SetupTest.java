@@ -19,10 +19,10 @@ public class SetupTest {
     //ExtentTest extentTest;
     //final String filePath = "/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/extentreporting/report.html";
   
-	@BeforeSuite
+	//@BeforeSuite
 	public void init() throws MalformedURLException{
 		System.out.println("*** Before Suite ***");
-		new BasePage();
+	//	new BasePage();
 		
 		//extentReporters = new ExtentReports(filePath, true);
 				
@@ -30,7 +30,7 @@ public class SetupTest {
 	
 	
 
-	@AfterSuite
+//	@AfterSuite
 	public void end(){
 		System.out.println("*** After Suite ***");
 //		extentReporters.flush();

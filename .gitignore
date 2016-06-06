@@ -1,7 +1,10 @@
 
 *.html
 
+
 test-output/*
 target/*
 .settings/*
+.classpath
+.project
 

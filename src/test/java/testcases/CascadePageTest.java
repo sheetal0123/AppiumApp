@@ -10,7 +10,7 @@ import pages.LoginPage;
 import pages.MyProfilePage;
 
 public class CascadePageTest {
-	@AfterMethod
+	//@AfterMethod
 	public void tearDown(){
 		BasePage.resetApp();
 	}

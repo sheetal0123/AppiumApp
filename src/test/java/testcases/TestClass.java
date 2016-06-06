@@ -30,7 +30,7 @@ public class TestClass {
 	}
 
 	
-	@AfterMethod
+	//@AfterMethod
 	protected void afterMethod(ITestResult result) {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			extentTest.log(LogStatus.FAIL, result.getThrowable());

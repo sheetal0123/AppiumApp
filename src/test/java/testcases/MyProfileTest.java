@@ -11,7 +11,7 @@ import pages.MyProfilePage;
 
 public class MyProfileTest {
 
-	@AfterMethod
+	//@AfterMethod
 	public void tearDown(){
 		BasePage.resetApp();
 	}

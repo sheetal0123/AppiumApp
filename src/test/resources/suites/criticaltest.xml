@@ -4,8 +4,7 @@
 <suite name="Login-Tests" parallel="false">
     <test name="Login-Tests">
         <classes>
-        	<class name="testcases.SetupTest"/>
-        	<class name="testcases.TestClass2"/>
+       	 	<class name="helper.TestClass"/>
             
             
             <!-- 
