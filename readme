@@ -1,4 +1,5 @@
 #POM Framework
+updated: 7th June 2016
 
 #Plans:
 1. read different capabilities of android and ios from enum  - done
@@ -9,8 +10,9 @@
 6. screenshot from inside catch block - done
 7. auto screenshot when any test case failed - done
 
-8. rerun failed test cases 
-9. setup adv test reporter - http://extentreports.relevantcodes.com/java/
+8. rerun failed test cases - done
+9. setup adv test reporter - http://extentreports.relevantcodes.com/java/  - partially
+   when we run two classes then report for only one class is coming
 
 10. setup fluentwait
 11. add methods - double click, scroll, landscape, drag and drop, double finger etc

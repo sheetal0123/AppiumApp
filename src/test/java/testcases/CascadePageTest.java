@@ -9,7 +9,7 @@ import pages.CascadePage;
 import pages.LoginPage;
 import pages.MyProfilePage;
 
-public class CascadePageTest {
+public class CascadePageTest extends SetupTest {
 	@AfterMethod
 	public void tearDown(){
 		BasePage.resetApp();
