@@ -15,25 +15,24 @@ import pages.BasePage;
  */
 public class SetupTest {
 
-	//ExtentReports extentReporters;
-    //ExtentTest extentTest;
-    //final String filePath = "/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/extentreporting/report.html";
-  
-	//@BeforeSuite
-	public void init() throws MalformedURLException{
-		System.out.println("*** Before Suite ***");
-	//	new BasePage();
-		
-		//extentReporters = new ExtentReports(filePath, true);
-				
-	}
-	
-	
+	// ExtentReports extentReporters;
+	// ExtentTest extentTest;
+	// final String filePath =
+	// "/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/extentreporting/report.html";
 
-//	@AfterSuite
-	public void end(){
+	@BeforeSuite
+	public void init() throws MalformedURLException {
+		System.out.println("*** Before Suite ***");
+		new BasePage();
+
+		// extentReporters = new ExtentReports(filePath, true);
+
+	}
+
+	@AfterSuite
+	public void end() {
 		System.out.println("*** After Suite ***");
-//		extentReporters.flush();
-//		extentReporters.close();
+		// extentReporters.flush();
+		// extentReporters.close();
 	}
 }

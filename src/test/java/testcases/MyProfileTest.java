@@ -11,13 +11,13 @@ import pages.MyProfilePage;
 
 public class MyProfileTest {
 
-	//@AfterMethod
-	public void tearDown(){
+	@AfterMethod
+	public void tearDown() {
 		BasePage.resetApp();
 	}
-		
+
 	@Test
-	public void verifyDisplayName() throws InterruptedException{
+	public void verifyDisplayName() throws InterruptedException {
 		System.out.println("*** My Profile Test 1");
 		LoginPage.login("testuser2@grindr.com", "222222");
 		Assert.assertTrue(CascadePage.isCascadePageLoaded());
@@ -25,9 +25,9 @@ public class MyProfileTest {
 		Assert.assertTrue(MyProfilePage.isMyProfilePageLoaded());
 		Assert.assertTrue(MyProfilePage.isMyNameDisplayed());
 	}
-	
+
 	@Test
-	public void verifyDisplayNameText() throws InterruptedException{
+	public void verifyDisplayNameText() throws InterruptedException {
 		System.out.println("*** My Profile Test 2");
 		LoginPage.login("testuser2@grindr.com", "222222");
 		Assert.assertTrue(CascadePage.isCascadePageLoaded());
@@ -36,5 +36,4 @@ public class MyProfileTest {
 		Assert.assertTrue(MyProfilePage.getDisplayName().contains("MyPie"));
 	}
 
-	
 }

@@ -20,10 +20,10 @@ public class LoginPageTest extends SetupTest {
 	 * resetApp will close the app and again open the app and 
 	 * user will be on login page from where new test case can start
 	 */
-//	@AfterMethod
-//	public void tearDown(){
-//		BasePage.resetApp();
-//	}
+	@AfterMethod
+	public void tearDown(){
+		BasePage.resetApp();
+	}
 	
 //	@AfterMethod
 //	 protected void afterMethod(ITestResult result) {
@@ -42,7 +42,7 @@ public class LoginPageTest extends SetupTest {
 //        
 //    }
 		
-	//@Test
+	@Test
 	public void verifyLoginPage() throws InterruptedException{
 		System.out.println("*** Login Test 1");
 		LoginPage.login("one@grindr.com", "111111");
@@ -51,7 +51,7 @@ public class LoginPageTest extends SetupTest {
 		
 	}
 	
-	//@Test
+	@Test
 	public void verifyEmailFiled() throws InterruptedException, IOException{
 		System.out.println("*** Login Test 2");
 		Assert.assertTrue(LoginPage.isEmailFieldDisplayed());
@@ -66,14 +66,14 @@ public class LoginPageTest extends SetupTest {
 		*/
 	}
 	
-	//@Test
+	@Test
 	public void verifyPasswordField() throws InterruptedException{
 		System.out.println("*** Login Test 3");
 		Assert.assertTrue(LoginPage.isPasswordFieldDisplayed());
 	}
 	
 	
-	 @Test
+//	 @Test
 	 public void passTest() {
 //		 extentTest = extentReporters.startTest("passTest");
 //		 extentTest.log(LogStatus.PASS, "Pass");
@@ -81,7 +81,7 @@ public class LoginPageTest extends SetupTest {
 	 }
 	    
 	 
-	 @Test
+//	 @Test
 	 public void intentionalFailure() throws Exception {
 //	    extentTest = extentReporters.startTest("intentionalFailure");
 //	    throw new Exception("intentional failure");        

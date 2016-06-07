@@ -97,7 +97,6 @@ public class BasePage {
 		return null;
 	}
 
-	
 	public static void quit() {
 		driver.quit();
 	}
@@ -106,23 +105,22 @@ public class BasePage {
 		driver.resetApp();
 	}
 
-
 	/*
 	 * This method will take screen shot and place in specified folder
 	 */
-	public static void getScreenshot(String testclass, String testname) throws IOException  {
+	public static void getScreenshot(String testclass, String testname) throws IOException {
 		String timestamp = new SimpleDateFormat("yyyyMMddhhmmss'.png'").format(new Date());
-		String dir; 
-		
-		//todo: path need to be relative
-		if(os.equals("android")){
+		String dir;
+
+		// todo: path need to be relative
+		if (os.equals("android")) {
 			dir = "/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/screenshots/android/";
-		}else{
+		} else {
 			dir = "/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/screenshots/ios/";
 		}
-		
-		String path = dir+testclass+"_"+testname+"_"+timestamp;  
-		System.out.println("path:"+path);
+
+		String path = dir + testclass + "_" + testname + "_" + timestamp;
+		System.out.println("path:" + path);
 
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(scrFile, new File(path));
