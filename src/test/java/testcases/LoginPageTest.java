@@ -103,6 +103,7 @@ public class LoginPageTest extends SetupTest {
 		System.out.println("Total user:"+ CascadePage.getUserCount());
 	}
 	
+	
 	@Test
 	public void verifyEmailFiledExtent() throws InterruptedException, IOException{
 		System.out.println("### Extent login 2");
@@ -111,18 +112,8 @@ public class LoginPageTest extends SetupTest {
 		test.log(LogStatus.PASS, "Step 1: verify email field presence");
 		Assert.assertTrue(LoginPage.isEmailFieldDisplayed());
 		
-		
-		
-		/**
-		from catch we can call getscreenshot method
-		try{
-			LoginPage.isEmailFieldDisplayed();
-		}catch(NoSuchElementException e){
-			//pass test class name and test name for better reporting
-			LoginPage.getScreenshot("LoginPageTest","verifyEmailFiled");			
-		}
-		*/
 	}
+	
 	
 	@Test
 	public void verifyPasswordFieldExtent() throws InterruptedException{
