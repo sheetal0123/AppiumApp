@@ -1,6 +1,6 @@
 
 *.html
-
+*.png
 
 test-output/*
 target/*

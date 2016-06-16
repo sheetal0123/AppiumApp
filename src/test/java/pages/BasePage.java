@@ -42,6 +42,7 @@ public class BasePage {
 		initDriver(os, device);
 	}
 
+	//TODO: replace with relative path
 	public void getProperties() {
 		// reading from properties file
 		properties = new Properties();
