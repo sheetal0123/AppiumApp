@@ -48,7 +48,7 @@ public class BasePage {
 		properties = new Properties();
 		try {
 			properties.load(new FileInputStream(
-					"/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/grindr.properties"));
+					"/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/gr.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
