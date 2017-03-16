@@ -13,10 +13,12 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import helper.DriverRepo;
+import helper.Logo;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -47,8 +49,8 @@ public class BasePage {
 		// reading from properties file
 		properties = new Properties();
 		try {
-			properties.load(new FileInputStream(
-					"/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/gr.properties"));
+//			properties.load(new FileInputStream("/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/gr.properties"));
+			properties.load(new FileInputStream("src/test/resources/gr.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -74,10 +76,12 @@ public class BasePage {
 			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
 					DriverRepo.ANDROID_NEXUS_5_API23.getDesiredCapabilities());
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			Logo.printLogo("android");
 		} else if (os.equals("ios") && device.equals("iPhone_6_9.2")) {
 			driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
 					DriverRepo.IOS_IPHONE6_OS_9_2.getDesiredCapabilities());
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			Logo.printLogo("ios");
 		} else {
 			System.out.println("Driver: no driver selected");
 			System.out.println("Running test with driver: " + os + " & device: " + device);
@@ -89,11 +93,11 @@ public class BasePage {
 	 * Based on android and ios, this method will return By locator of any
 	 * element
 	 */
-	public static By getByElement(By a_element, By i_element) {
+	public static By getByElement(By android_element, By ios_element) {
 		if (os.equals("android")) {
-			return a_element;
+			return android_element;
 		} else if (os.equals("ios")) {
-			return i_element;
+			return ios_element;
 		}
 		return null;
 	}
@@ -155,5 +159,22 @@ public class BasePage {
 	public static String getAttributeValue(By locator, String attribute) {
 		return driver.findElement(locator).getAttribute(attribute);
 	}
+	
+    /**
+     * Method will swipe from bottom to top direction means page will move towards downward accept parameter like 0.90, 0.10 and swipe accordingly
+     */
+	public static void swipeVerticallyBottomToUp(double bottom, double up){
+		Dimension size;
+        size = driver.manage().window().getSize();
+
+        int startX = size.width / 2;
+        int startY = (int) (size.height * bottom);
+        int endY = (int) (size.height * up);
+        System.out.println("starty = " + startY + " ,endy = " + endY + " , startx = " + startX);
+
+        driver.swipe(startX, startY, startX, endY, 1000);
+	}
+	
+	
 
 }

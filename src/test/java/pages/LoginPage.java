@@ -25,7 +25,7 @@ public class LoginPage extends BasePage {
 	static By i_forgotPassswordButton = By.id("TODO");
 	static By forgotPassswordButton = getByElement(a_forgotPassswordButton, i_forgotPassswordButton);
 
-	public LoginPage() throws MalformedURLException {
+	public LoginPage() throws MalformedURLException  {
 		super();
 	}
 

@@ -6,7 +6,7 @@
 		<classes>
 
 			<class name="testcases.SetupTest" />
-			<class name="testcases.LoginPageTest" />
+			<class name="testcases.EditProfileTest" />
 
 		</classes>
 	</test>
