@@ -1,6 +1,8 @@
 #POM Framework
 updated: 7th June 2016
 
+Appium 1.22 with Java-client 7
+
 #Plans:
 1. read different capabilities of android and ios from enum  - done
 2. locator for android and ios in page class - done
@@ -34,3 +36,58 @@ mvn clean test -Dosdevice=ios#iPhone_6_9.2 -DsuiteXmlFile=src/test/resources/sui
 
 #read driver info from property file
 mvn clean test -DsuiteXmlFile=src/test/resources/suites/criticaltest.xml
+
+
+
+
+#Setup part
+1. Install Java Maven
+2. Install Appium
+   Download zip file https://github.com/appium/appium-desktop/releases/tag/v1.22.3-4
+   Unzip into Appium-Desktop folder 
+   Create shortcut and open AppiumServerGUI
+3. Install latest Android Studio via exe file https://developer.android.com/studio
+   Give default values and click Next....sample MyApplication project will be created 
+   
+4. Download Appium Inspector zip file from https://github.com/appium/appium-inspector/releases
+   Unzip into Appium-Inspector folder and create shortcut and open Appium Inspector
+   
+5. Env variable setup   
+   ANDROID_HOME = C:\Users\cmash\AppData\Local\Android\Sdk           (AppData is hidden folder)
+   
+   Directly add into path:
+   C:\Users\cmash\AppData\Local\Android\Sdk\build-tools
+   C:\Users\cmash\AppData\Local\Android\Sdk\platform-tools
+   C:\Users\cmash\AppData\Local\Android\Sdk\tools
+   C:\Users\cmash\AppData\Local\Android\Sdk\platforms
+ 
+6. Verify Setup
+    java -version
+    mvn -version
+    adb devices or adb
+    
+7. Create Mobile Device
+   Open Android Studio Workspace
+   Go to > C:\Program Files\Android\Android Studio\bin
+   Double click studio.sh window batch file
+   Create studio.sh shortcut
+   
+   Go to Device Manager (top right)
+   Select any device and create.... API number suggest Android version
+   
+8. Launch Emulator from created list
+   "adb devices" command shd show newly started device
+   
+  
+  
+  
+  
+AVD Name = Nexus 5 API 24   
+      
+
+
+    
+    
+Play List    
+https://www.youtube.com/playlist?list=PLk9dTrObC0OI1tFvr4Pqp2OhNJnia1iBJ
+   

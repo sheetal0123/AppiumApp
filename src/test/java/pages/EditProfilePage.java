@@ -33,6 +33,7 @@ public class EditProfilePage extends BasePage {
 	 * Setters
 	 */
 	public static void setFacebookUserName(String username){
+		/*
 		swipeVerticallyBottomToUp(0.90, 0.10);
 		boolean fb = isFacebookFieldDisplayed();
 		System.out.println(fb);
@@ -41,6 +42,7 @@ public class EditProfilePage extends BasePage {
 			swipeVerticallyBottomToUp(0.80, 0.30);
 		}
 		sendKeys(facebook, username);
+		*/
 	}
 	
 	

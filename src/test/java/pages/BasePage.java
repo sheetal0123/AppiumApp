@@ -7,6 +7,7 @@ import org.apache.commons.io.FileUtils;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
 import java.util.List;
 import java.util.Properties;
@@ -21,8 +22,11 @@ import helper.DriverRepo;
 import helper.Logo;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 
 /*
  * Base page is parent class of all page classes
@@ -35,6 +39,7 @@ import io.appium.java_client.ios.IOSDriver;
 public class BasePage {
 
 	static AppiumDriver<MobileElement> driver;
+	
 	public Properties properties;
 	String cmd_osdevice, osdevice, device;
 	static String os;
@@ -72,16 +77,16 @@ public class BasePage {
 	}
 
 	public void initDriver(String os, String device) throws MalformedURLException {
-		if (os.equals("android") && device.equals("Nexus_5_API_23")) {
-			driver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
-					DriverRepo.ANDROID_NEXUS_5_API23.getDesiredCapabilities());
+		if (os.equals("android") && device.equals("Nexus_5_API_24")) {
+			driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"),
+					DriverRepo.ANDROID_NEXUS_5_API24.getDesiredCapabilities());
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Logo.printLogo("android");
+			Logo.printLogo("android Nexus_5_API_24");
 		} else if (os.equals("ios") && device.equals("iPhone_6_9.2")) {
 			driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"),
 					DriverRepo.IOS_IPHONE6_OS_9_2.getDesiredCapabilities());
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Logo.printLogo("ios");
+			Logo.printLogo("ios iPhone_6_9.2");
 		} else {
 			System.out.println("Driver: no driver selected");
 			System.out.println("Running test with driver: " + os + " & device: " + device);
@@ -163,6 +168,7 @@ public class BasePage {
     /**
      * Method will swipe from bottom to top direction means page will move towards downward accept parameter like 0.90, 0.10 and swipe accordingly
      */
+	/*
 	public static void swipeVerticallyBottomToUp(double bottom, double up){
 		Dimension size;
         size = driver.manage().window().getSize();
@@ -172,9 +178,41 @@ public class BasePage {
         int endY = (int) (size.height * up);
         System.out.println("starty = " + startY + " ,endy = " + endY + " , startx = " + startX);
 
+        
         driver.swipe(startX, startY, startX, endY, 1000);
-	}
+	}*/
 	
+	
+	public static void swipeHorizontal(double startPercentage, double finalPercentage, double anchorPercentage, int duration) throws Exception {
+		TouchAction action = new TouchAction(driver);
+        Dimension size = driver.manage().window().getSize();
+        int width=size.width;
+        int height=size.height;	
+        
+        int middleOfY=height/2;
+        int startXCoordinate= (int)(width*.7);
+        int endXCoordinate= (int)(width*.2);
+        
+        action.press(PointOption.point(middleOfY, startXCoordinate))
+        .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
+        .moveTo(PointOption.point(middleOfY, endXCoordinate)).release().perform();
+    }
+
+
+    public static void swipeVertical(double startPercentage, double finalPercentage, double anchorPercentage, int duration) throws Exception {
+        TouchAction  action =new TouchAction(driver);	
+        Dimension size	=driver.manage().window().getSize();
+        int width=size.width;
+        int height=size.height;				
+        int middleOfX=width/2;
+        int startYCoordinate= (int)(height*.7);
+        int endYCoordinate= (int)(height*.2);
+        				
+        action.press(PointOption.point(middleOfX, startYCoordinate))
+        .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
+        .moveTo(PointOption.point(middleOfX, endYCoordinate)).release().perform();
+    
+    }
 	
 
 }

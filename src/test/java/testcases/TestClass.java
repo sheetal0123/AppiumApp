@@ -21,8 +21,10 @@ import pages.MyProfilePage;
 public class TestClass {
 	ExtentReports extent;
 	ExtentTest test;
-	final String filePath = "/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/extentreporting/testreport.html";
-	final String screenShotPath = "/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/extentreporting/";
+	//final String filePath = "/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/extentreporting/testreport.html";
+	//final String screenShotPath = "/Users/sheetalsingh/Documents/workspace/AppiumApp/src/test/resources/extentreporting/";
+	final String filePath = "src/test/resources/extentreporting/mainreportTestClass.html";
+	final String screenShotPath = "src/test/resources/extentreporting";
 	
 	@BeforeSuite
 	public void beforeSuite() throws MalformedURLException {

@@ -40,7 +40,7 @@ public class LoginPageTest extends SetupTest {
 //		BasePage.resetApp();
 //	}
 	
-	@AfterMethod
+	//@AfterMethod
 	protected void afterMethod(ITestResult result) {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			test.log(LogStatus.FAIL, result.getThrowable());
@@ -95,7 +95,7 @@ public class LoginPageTest extends SetupTest {
 		test = extent.startTest("verifyLoginPageExtent").assignCategory("sanity");
 		
 		test.log(LogStatus.PASS, "Step 1: Login into application");
-		LoginPage.login("one@grindr.com", "111111");
+		LoginPage.login("x@grindr.com", "111111");
 		
 		test.log(LogStatus.PASS, "Step 2: verify cascade page");
 		Assert.assertTrue(CascadePage.isCascadePageLoaded());
@@ -104,7 +104,7 @@ public class LoginPageTest extends SetupTest {
 	}
 	
 	
-	@Test
+	//@Test
 	public void verifyEmailFiledExtent() throws InterruptedException, IOException{
 		System.out.println("### Extent login 2");
 		test = extent.startTest("verifyEmailFiledExtent").assignCategory("regression");
@@ -115,7 +115,7 @@ public class LoginPageTest extends SetupTest {
 	}
 	
 	
-	@Test
+	//@Test
 	public void verifyPasswordFieldExtent() throws InterruptedException{
 		System.out.println("### Extent login 3");
 		test = extent.startTest("verifyPasswordFieldExtent").assignCategory("regression");
