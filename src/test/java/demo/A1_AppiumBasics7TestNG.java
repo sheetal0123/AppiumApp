@@ -29,8 +29,12 @@ import io.appium.java_client.remote.MobilePlatform;
  * 
  * 
  * 
- * mvn clean test -DsuiteXmlFile=appium_basics.xml
+ * mvn clean test -DsuiteXmlFile=appium_basics.xml           Eclipse
+ * mvn clean test -DsuiteXmlFile="appium_basics.xml"         IntelliJ
  * Report : target/surefire-reports/index.html
+ * 
+ * 
+ * Office laptop: Manually start Appium UI Server 1.22 / Working fine
  */
 
 public class A1_AppiumBasics7TestNG {
@@ -62,7 +66,9 @@ public class A1_AppiumBasics7TestNG {
 
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554"); 
 		//capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 4 API 27"); //Both will work
+
 		capabilities.setCapability("appium-version", "1.22.3"); //Start Appium server and it will display
+		capabilities.setCapability("appium:noReset", true); //true: will not reset app
 		
 		ClassLoader classLoader = getClass().getClassLoader();
 		File file = new File(classLoader.getResource("builds/A_ApiDemos-debug.apk").getFile());

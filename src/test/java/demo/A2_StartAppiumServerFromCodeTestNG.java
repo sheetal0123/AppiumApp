@@ -18,18 +18,11 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
 /*
- * This class is for Appium v1 + Java-client 7
- * Welcome to Appium v1.22.3
- * 
- * Close Appium Server GUI, Restart Emulator
- * Appium Inspector will not work as we have closed local Appium Server
- * 
- * Keep a note of
- * .withArgument(GeneralServerFlag.BASEPATH, "/wd/hub")
+ * This class is for Appium v1 and v2 + Java-client 7
  * 
  * 
- * 
- * mvn clean test -DsuiteXmlFile=appium_code.xml
+ * mvn clean test -DsuiteXmlFile=appium_code.xml        Eclipse
+ * mvn clean test -DsuiteXmlFile="appium_code.xml"      IntelliJ
  * Report : target/surefire-reports/index.html
 
  * 
@@ -49,14 +42,25 @@ public class A2_StartAppiumServerFromCodeTestNG {
 	@BeforeClass
 	public void init() throws MalformedURLException {
 		String nodeExePath = "C:\\Program Files\\nodejs\\node.exe";
-		String nodeJSMainPath = "C:\\Users\\cmash\\Downloads\\Appium-Desktop\\resources\\app\\node_modules\\appium\\build\\lib\\main.js";
+		
+		//Appium 1 installation path
+		String nodeJSMainPath2 = "C:\\Users\\cmash\\Downloads\\Appium-Desktop\\resources\\app\\node_modules\\appium\\build\\lib\\main.js";
+		//Appium 2 installation path
+		String nodeJSMainPath = "C:\\Users\\cmash\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js";
 		String logFilePath = "C:\\Users\\cmash\\Documents\\Papi\\Repo\\AppiumTest\\src\\test\\resources\\logs\\log.txt";
 
-		service = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
-				.withAppiumJS(new File(nodeJSMainPath)).usingDriverExecutable(new File(nodeExePath))
-				.withIPAddress("127.0.0.1").withArgument(GeneralServerFlag.BASEPATH, "/wd/hub") // IMP
-				.usingPort(4723).withLogFile(new File(logFilePath))
+		//Office
+		String nodeJSMainPathOff = "C:\\Users\\2245419\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js";
+		String logFilePathOff = "C:\\Users\\2245419\\Documents\\CodeRepoAppiumApp\\AppiumApp\\src\\test\\resources\\logs\\log.txt";
 
+				
+		service = AppiumDriverLocalService.buildService(new AppiumServiceBuilder()
+				.withAppiumJS(new File(nodeJSMainPath))
+				.usingDriverExecutable(new File(nodeExePath))
+				.withIPAddress("127.0.0.1")
+				.withArgument(GeneralServerFlag.BASEPATH, "/wd/hub") // IMP
+				.usingPort(4723)
+				.withLogFile(new File(logFilePath))
 		);
 
 		String appiumUrl = service.getUrl().toString();
@@ -85,10 +89,12 @@ public class A2_StartAppiumServerFromCodeTestNG {
 		capabilities.setCapability("appActivity", "io.appium.android.apis.ApiDemos");
 
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
-		// capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 4 API
-		// 27"); //Both will work
-		capabilities.setCapability("appium-version", "1.22.3"); // Start Appium server and it will display
+		//capabilities.setCapability("appium-version", "1.22.3"); // Start Appium server and it will display
 
+		//Office
+		capabilities.setCapability("appium:appium-version", "1.22.3"); //Office
+		capabilities.setCapability("automationName", "UiAutomator2"); //Only in case Appium 2.0 is installed
+		
 		ClassLoader classLoader = getClass().getClassLoader();
 		File file = new File(classLoader.getResource("builds/A_ApiDemos-debug.apk").getFile());
 		capabilities.setCapability(MobileCapabilityType.APP, file.getAbsolutePath());

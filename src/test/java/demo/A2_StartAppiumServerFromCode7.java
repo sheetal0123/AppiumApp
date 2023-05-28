@@ -16,14 +16,19 @@ import io.appium.java_client.service.local.flags.GeneralServerFlag;
 
 
 /*
- * This class is for Appium v1 + Java-client 7
- * Welcome to Appium v1.22.3
+ * This class is for Appium v1 and v2 + Java-client 7
  * 
  * Close Appium Server GUI, Restart Emulator
  * Appium Inspector will not work as we have closed local Appium Server
  * 
  * Keep a note of
  * .withArgument(GeneralServerFlag.BASEPATH, "/wd/hub")
+ * 
+ * 
+ * 
+ * Home working on both 1.22 and 2.0
+ * Office 2.0.0 beta.66
+ * 
  */
 public class A2_StartAppiumServerFromCode7 {
 
@@ -40,7 +45,13 @@ public class A2_StartAppiumServerFromCode7 {
 
 		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554"); 
 		//capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "Pixel 4 API 27"); //Both will work
-		capabilities.setCapability("appium-version", "1.22.3"); //Start Appium server and it will display
+		//capabilities.setCapability("appium-version", "1.22.3"); //Start Appium server and it will display
+
+		//Office
+		capabilities.setCapability("appium:appium-version", "1.22.3"); //Office
+		capabilities.setCapability("automationName", "UiAutomator2"); //Only in case Appium 2.0 is installed (Office)
+
+		
 		
 		ClassLoader classLoader = getClass().getClassLoader();
 		File file = new File(classLoader.getResource("builds/A_ApiDemos-debug.apk").getFile());
@@ -57,9 +68,19 @@ public class A2_StartAppiumServerFromCode7 {
 	 */
 	public void startAppiumServer() {
 		String nodeExePath = "C:\\Program Files\\nodejs\\node.exe";
-		String nodeJSMainPath = "C:\\Users\\cmash\\Downloads\\Appium-Desktop\\resources\\app\\node_modules\\appium\\build\\lib\\main.js";
-		String logFilePath = "C:\\Users\\cmash\\Documents\\Papi\\Repo\\AppiumTest\\src\\test\\resources\\logs\\log.txt";
+		
+		//Appium 1 installation path
+		String nodeJSMainPath2 = "C:\\Users\\cmash\\Downloads\\Appium-Desktop\\resources\\app\\node_modules\\appium\\build\\lib\\main.js";
+		//Appium 2 installation path
+		String nodeJSMainPath = "C:\\Users\\cmash\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js";
+		String logFilePath = "C:\\Users\\cmash\\Documents\\Papi\\Repo\\AppiumApp\\src\\test\\resources\\logs\\log.txt";
+		
+		//Office
+		String nodeJSMainPathOff = "C:\\Users\\2245419\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js";
+		String logFilePathOff = "C:\\Users\\2245419\\Documents\\CodeRepoAppiumApp\\AppiumApp\\src\\test\\resources\\logs\\log.txt";
 
+		
+		
 		service = AppiumDriverLocalService
 				.buildService(new AppiumServiceBuilder()
 						.withAppiumJS(new File(nodeJSMainPath))
